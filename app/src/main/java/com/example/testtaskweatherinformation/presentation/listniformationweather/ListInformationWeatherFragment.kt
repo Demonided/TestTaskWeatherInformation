@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.testtaskweatherinformation.databinding.FragmentInformationListBinding
 
-class ListInformationWeather: Fragment() {
+class ListInformationWeatherFragment: Fragment() {
 
     private var _binding: FragmentInformationListBinding? = null
     private val binding get() = _binding!!

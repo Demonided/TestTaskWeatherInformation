@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskweatherinformation.data.converter.ConverterEntity.mapToListWeatherInformation
 import com.example.testtaskweatherinformation.data.information.weather.WeatherResponse
 import com.example.testtaskweatherinformation.data.network.GlobalProjectApi
 import com.example.testtaskweatherinformation.domain.information.WeatherRepository
 import com.example.testtaskweatherinformation.util.debugLog
 import kotlinx.coroutines.launch
 
-class InformationViewModel(
+class InformationWeatherViewModel(
     private val weatherApi: GlobalProjectApi,
     private val weatherRepository: WeatherRepository
 ) : ViewModel() {
