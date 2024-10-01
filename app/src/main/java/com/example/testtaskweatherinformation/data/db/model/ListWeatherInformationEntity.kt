@@ -13,5 +13,6 @@ data class ListWeatherInformationEntity(
     val humidity: Int,
     val speed: Double,
     val lon: Double,
-    val lat: Double
+    val lat: Double,
+    val timestamp: Long = System.currentTimeMillis()
 )

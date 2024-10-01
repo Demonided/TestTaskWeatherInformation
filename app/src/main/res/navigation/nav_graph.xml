@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/informationFragment"
-        android:name="com.example.testtaskweatherinformation.presentation.information.InformationFragment"
+        android:name="com.example.testtaskweatherinformation.presentation.information.InformationWeatherFragment"
         android:label="InformationFragment"
         tools:layout="@layout/fragment_information"/>
     <fragment
         android:id="@+id/listInformationFragment"
-        android:name="com.example.testtaskweatherinformation.presentation.listniformationweather.ListInformationWeather"
+        android:name="com.example.testtaskweatherinformation.presentation.listniformationweather.ListInformationWeatherFragment"
         android:label="ListInformationWeather"
         tools:layout="@layout/fragment_information_list"/>
 </navigation>

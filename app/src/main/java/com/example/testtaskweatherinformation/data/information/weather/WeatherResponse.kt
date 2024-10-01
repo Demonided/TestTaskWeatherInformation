@@ -11,7 +11,7 @@ data class WeatherResponse(
     val wind: WeatherWind,
     val id: Int,
     val name: String,
-    val cod: Int
+    val cod: Int,
 )
 
 data class DataCoord(

@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.example.testtaskweatherinformation.databinding.FragmentInformationBinding
+import com.example.testtaskweatherinformation.util.debugLog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class InformationFragment: Fragment() {
+class InformationWeatherFragment: Fragment() {
 
-    private val viewModel by viewModel<InformationViewModel>()
+    private val viewModel by viewModel<InformationWeatherViewModel>()
 
     private var _binding: FragmentInformationBinding? = null
     private val binding get() = _binding!!
@@ -29,12 +29,19 @@ class InformationFragment: Fragment() {
             val cityName = binding.informationSearch.text.toString()
             if (cityName.isNotEmpty()) {
                 viewModel.fetchWeatherByCity(cityName)
+                debugLog(TAG){
+                    ("System.currentTimeMillis() = ${System.currentTimeMillis()}")
+                }
             } else {
                 Toast.makeText(requireContext(), "Please enter a city name", Toast.LENGTH_SHORT).show()
             }
         }
 
+        // Отображение данных о погоде подпиской к лайв дате
         viewModel.weatherData.observe(viewLifecycleOwner) { info ->
+            if (info.id != 0) {
+                binding.informationLayoutAll.visibility = View.VISIBLE
+            }
             binding.informationName.text = info.name
             binding.informationTemp.text = info.main.temp.toString()
             binding.informationHumidity.text = info.main.humidity.toString()
@@ -42,8 +49,17 @@ class InformationFragment: Fragment() {
             binding.informationSpeed.text = info.wind.speed.toString()
         }
 
-        viewModel.error.observe(viewLifecycleOwner, Observer { errorMessage ->
+        viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
+//            if (errorMessage.isNotEmpty()) {
+//                binding.informationLayoutAll.visibility = View.GONE
+//            } else {
+//                binding.informationLayoutAll.visibility = View.VISIBLE
+//            }
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-        })
+        }
+    }
+
+    companion object {
+        const val TAG = "InformationWeatherFragment"
     }
 }
