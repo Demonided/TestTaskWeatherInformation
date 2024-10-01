@@ -12,7 +12,6 @@ data class WeatherResponse(
     val id: Int,
     val name: String,
     val cod: Int,
-    val timestamp: Long = System.currentTimeMillis()
 )
 
 data class DataCoord(

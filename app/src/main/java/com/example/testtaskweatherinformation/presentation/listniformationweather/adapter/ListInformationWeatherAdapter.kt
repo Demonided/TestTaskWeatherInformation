@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testtaskweatherinformation.R
+import com.example.testtaskweatherinformation.data.db.model.ListWeatherInformationEntity
 import com.example.testtaskweatherinformation.data.information.weather.WeatherResponse
 
 class ListInformationWeatherAdapter(
-    private val weather: List<WeatherResponse>
+    private var weather: List<ListWeatherInformationEntity>
 ) : RecyclerView.Adapter<ListInformationWeatherViewHolder>() {
 
-    var weatherClicked: (WeatherResponse) -> Unit = {}
+    var weatherClicked: (ListWeatherInformationEntity) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListInformationWeatherViewHolder {
         val view = LayoutInflater
@@ -28,4 +29,10 @@ class ListInformationWeatherAdapter(
     }
 
     override fun getItemCount(): Int = weather.size
+
+    // Метод для обновления данных
+    fun updateWeatherData(newWeather: List<ListWeatherInformationEntity>) {
+        weather = newWeather
+        notifyDataSetChanged()  // Сообщаем адаптеру, что данные изменились
+    }
 }

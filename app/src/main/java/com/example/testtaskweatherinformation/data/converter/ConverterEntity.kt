@@ -14,7 +14,6 @@ object ConverterEntity {
             humidity = main.humidity,
             speed = wind.speed,
             lon = coord.lon,
-            lat = coord.lat,
-            timestamp = timestamp
+            lat = coord.lat
         )
 }

@@ -37,6 +37,9 @@ class InformationWeatherViewModel(
                     val weatherResponse = weatherApi.getInformationWeather(lat, lon)
                     _weatherData.value = weatherResponse
 
+                    debugLog(TAG) {
+                        ("data weather = ${weatherResponse.id}")
+                    }
                     weatherRepository.saveWeatherData(weatherResponse) // Сохранение данных в Room
 
                 } else {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.testtaskweatherinformation.databinding.FragmentInformationBinding
+import com.example.testtaskweatherinformation.util.debugLog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InformationWeatherFragment: Fragment() {
@@ -28,6 +29,9 @@ class InformationWeatherFragment: Fragment() {
             val cityName = binding.informationSearch.text.toString()
             if (cityName.isNotEmpty()) {
                 viewModel.fetchWeatherByCity(cityName)
+                debugLog(TAG){
+                    ("System.currentTimeMillis() = ${System.currentTimeMillis()}")
+                }
             } else {
                 Toast.makeText(requireContext(), "Please enter a city name", Toast.LENGTH_SHORT).show()
             }
@@ -53,5 +57,9 @@ class InformationWeatherFragment: Fragment() {
 //            }
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    companion object {
+        const val TAG = "InformationWeatherFragment"
     }
 }
