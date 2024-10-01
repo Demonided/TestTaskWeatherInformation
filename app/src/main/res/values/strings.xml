@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TestTaskWeatherInformation</string>
+
+    <string name="information">Информация</string>
+    <string name="list_information">Список</string>
+    <string name="list_informations">Test</string>
 </resources>
