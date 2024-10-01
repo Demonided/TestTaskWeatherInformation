@@ -36,6 +36,14 @@ class ListInformationWeatherFragment: Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.informationListRecycler.adapter = adapter
 
+        binding.informationSwipeRefreshLayout.setOnRefreshListener {
+            // Обновляем данные
+            viewModel.loadWeatherData()
+
+            // Останавливаем анимацию после завершения
+            binding.informationSwipeRefreshLayout.isRefreshing = false
+        }
+
         viewModel.weatherData.observe(viewLifecycleOwner) { item ->
             adapter.updateWeatherData(item)
 

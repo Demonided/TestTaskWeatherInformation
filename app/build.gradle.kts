@@ -76,4 +76,7 @@ dependencies {
 
     // Json
     implementation(libs.kotlinx.serialization.json)
+
+    // Swipe
+    implementation(libs.swipe)
 }
